@@ -7,7 +7,7 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item>
-            <router-link to="/">Home</router-link>
+            <router-link to="/">Shop</router-link>
           </b-nav-item>
           <b-nav-item>
             <router-link to="/about">About</router-link>
@@ -19,6 +19,9 @@
 </template>
 
 <style lang="scss">
+  nav{
+    margin-bottom: 20px;
+  }
   .navbar-brand {
     font-weight: bold !important;
     color: #8E5842 !important;

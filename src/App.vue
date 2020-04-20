@@ -2,6 +2,7 @@
   <b-container>
     <div id="app">
       <Nav/>
+      <router-view />
     </div>
   </b-container>
 </template>
