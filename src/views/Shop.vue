@@ -1,7 +1,5 @@
 <template>
-  <div class="shop">
     <BookList />
-  </div>
 </template>
 
 <script>
