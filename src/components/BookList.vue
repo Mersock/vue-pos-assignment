@@ -12,7 +12,7 @@
               {{book.title}}
             </b-card-text>
             <b-card-text><strong>฿ {{commasPrice(book.price)}}</strong></b-card-text>
-            <b-button class="btn-green" @click="addBasket(book.id)">Add to Basket</b-button>
+            <b-button class="btn-green" @click="addBasket(book.id)"><b-icon icon="plus"></b-icon>&nbsp;Add to Basket</b-button>
           </b-card>
         </b-col>
       </b-row>

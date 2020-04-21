@@ -27,5 +27,9 @@ export default {
       const discount = state.basketBookItem[index].discount
       payload.netTotal = quantity > 1 ? priceTotal - discount : priceTotal
     }
+  },
+  clearBasket: (state) => {
+    state.basketBookItem = []
+    state.basketTotal = 0
   }
 }
