@@ -18,11 +18,10 @@
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-
           <b-nav-item>
             <b-button class="btn-green">
-              <b-icon icon="gift"></b-icon>&nbsp;
-              <b-badge variant="light">0 <span class="sr-only"></span></b-badge>
+              <b-icon icon="bag-fill"></b-icon>&nbsp;
+              <b-badge variant="light">{{basketTotal}} <span class="sr-only"></span></b-badge>
             </b-button>
           </b-nav-item>
 
@@ -31,3 +30,15 @@
     </b-navbar>
   </div>
 </template>
+
+<script>
+import { mapState } from 'vuex'
+
+export default {
+  computed: {
+    ...mapState([
+      'basketTotal'
+    ])
+  }
+}
+</script>

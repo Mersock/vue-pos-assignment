@@ -1,5 +1,7 @@
 import books from '@/data/book'
 
 export default {
-  books
+  books,
+  basketTotal: 0,
+  basketBookItem: []
 }

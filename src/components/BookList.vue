@@ -1,7 +1,7 @@
 <template>
   <div>
       <b-row v-for="(bookItem,j) in getBooks" :key="j">
-        <b-col v-for="(book,i) in bookItem" :key="i" class="d-flex">
+        <b-col v-for="(book,i) in bookItem" :key="i" class="d-flex card-item">
           <b-card
             tag="article"
             style="max-width: 20rem;"
@@ -11,7 +11,8 @@
             <b-card-text>
               {{book.title}}
             </b-card-text>
-            <b-button href="#"  class="btn-green">Add to Basket</b-button>
+            <b-card-text><strong>฿ {{commasPrice(book.price)}}</strong></b-card-text>
+            <b-button class="btn-green" @click="addBasket(book.id)">Add to Basket</b-button>
           </b-card>
         </b-col>
       </b-row>
@@ -19,16 +20,34 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions, mapState } from 'vuex'
+import { numberWithCommas } from '@/utils/index'
 
 export default {
   data () {
     return {
     }
   },
+  methods: {
+    ...mapActions([
+      'addBook'
+    ]),
+    addBasket (bookId) {
+      const payload = this.books.find(book => {
+        return book.id === bookId
+      })
+      this.addBook(payload)
+    },
+    commasPrice (number) {
+      return numberWithCommas(number)
+    }
+  },
   computed: {
     ...mapGetters([
       'getBooks'
+    ]),
+    ...mapState([
+      'books'
     ])
   }
 }
