@@ -18,13 +18,3 @@
     </b-navbar>
   </div>
 </template>
-
-<style lang="scss">
-  nav{
-    margin-bottom: 20px;
-  }
-  .navbar-brand {
-    font-weight: bold !important;
-    color: #8E5842 !important;
-  }
-</style>

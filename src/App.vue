@@ -16,35 +16,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-#app {
-  font-family: Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #000000;
-}
-a {
-  font-weight: bold;
-  color: #000000;
-
-  &.router-link-exact-active {
-    color: #42b983;
-  }
-}
-a:hover{
-  font-weight: bold;
-  color: #8E5842;
-}
-.btn-green{
-  color: #fff;
-  background-color: #42b983;
-  border-color: #42b983;
-}
-.btn-green:hover{
-  color: #fff;
-  background-color: #8E5842;
-  border-color: #8E5842;
-}
-</style>
