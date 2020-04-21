@@ -1,5 +1,5 @@
 <template>
-    <b-navbar toggleable="lg" type="light" variant="light">
+    <b-navbar toggleable="lg" type="light" variant="light" fixed="top">
       <b-navbar-brand href="#">
         Little Brown Book
       </b-navbar-brand>
