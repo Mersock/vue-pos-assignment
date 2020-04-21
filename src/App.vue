@@ -37,4 +37,14 @@ a:hover{
   font-weight: bold;
   color: #8E5842;
 }
+.btn-green{
+  color: #fff;
+  background-color: #42b983;
+  border-color: #42b983;
+}
+.btn-green:hover{
+  color: #fff;
+  background-color: #8E5842;
+  border-color: #8E5842;
+}
 </style>

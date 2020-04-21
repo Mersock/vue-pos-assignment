@@ -1,24 +1,19 @@
 <template>
   <div class="shop">
-    <BookList :books="books"/>
+    <BookList />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import BookList from '@/components/BookList.vue'
 
 export default {
+  name: 'Shop',
   components: {
     BookList
   },
   data () {
     return {}
-  },
-  computed: {
-    ...mapState([
-      'books'
-    ])
   }
 }
 </script>

@@ -1,34 +1,38 @@
 <template>
   <div>
-    <b-row>
-      <b-col
-        v-for="(book,index) in books"
-        :key="index"
-      >
-        <b-card
-          title="Card Title"
-          :img-src="`${book.cover}`"
-          img-alt="Image"
-          img-top
-          tag="article"
-          style="max-width: 20rem;"
-          class="mb-2"
-        >
-          <b-card-text>
-            {{book.title}}
-          </b-card-text>
-
-          <b-button href="#" variant="primary">Go somewhere</b-button>
-        </b-card>
-      </b-col>
-    </b-row>
+    <b-container>
+      <b-row v-for="(bookItem,j) in getBooks" :key="j">
+        <b-col v-for="(book,i) in bookItem" :key="i">
+          <b-card
+            tag="article"
+            style="max-width: 20rem;"
+            class="mb-2"
+            width="20px"
+          >
+            <b-img thumbnail fluid :src="book.cover" alt="Image 1"></b-img>
+            <b-card-text>
+              {{book.title}}
+            </b-card-text>
+            <b-button href="#"  class="btn-green">Go somewhere</b-button>
+          </b-card>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  props: {
-    books: Array
+  data () {
+    return {
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'getBooks'
+    ])
   }
 }
 </script>

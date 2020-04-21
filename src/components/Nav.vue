@@ -4,10 +4,11 @@
       <b-navbar-brand href="#">
         Little Brown Book
       </b-navbar-brand>
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item>
-            <router-link to="/">Shop</router-link>
+            <router-link to="/">Home</router-link>
           </b-nav-item>
           <b-nav-item>
             <router-link to="/about">About</router-link>
