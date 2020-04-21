@@ -1,6 +1,7 @@
 <template>
   <div>
     <b-navbar toggleable="lg" type="light" variant="light" fixed="top">
+      <img src="../assets/logo.png" class="d-inline-block align-top" alt="Kitten">
       <b-navbar-brand href="#">
         Little Brown Book
       </b-navbar-brand>
