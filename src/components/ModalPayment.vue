@@ -3,13 +3,13 @@
     <b-container v-if="!success">
       <b-row class="modal-body-row">
         <b-col>
-          <b-form-input v-model="paid" type="number" min="0" placeholder="Paid"></b-form-input>
+          <b-form-input v-model="paid" type="number" min="0" placeholder="Paid" @input.native="calChanges"></b-form-input>
         </b-col>
       </b-row
       >
       <b-row class="modal-body-row">
         <b-col>
-          <b-form-input type="number" min="0" placeholder="Change" readonly :value="change" v-if="success === false"></b-form-input>
+          <b-form-input type="number" min="0" placeholder="Change" readonly :value="parseInt(change)" v-if="success === false"></b-form-input>
         </b-col>
       </b-row>
     </b-container>
@@ -51,18 +51,16 @@ export default {
       'clearBasket'
     ]),
     showPaymentDetail () {
-      // this.$refs['payment-modal'].hide()
-      // console.log('xxx')
       this.success = true
       this.clearBasket()
     },
     hidePaymentModal () {
       this.paid = null
       this.change = null
+    },
+    calChanges (e) {
+      this.change = parseInt(e.target.value) - parseInt(this.netTotal)
     }
-  },
-  updated () {
-    this.change = this.paid - this.netTotal
   }
 }
 </script>
