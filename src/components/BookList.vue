@@ -12,7 +12,8 @@
               {{book.title}}
             </b-card-text>
             <b-card-text><strong>฿ {{book.price}}</strong></b-card-text>
-            <b-button class="btn-green" @click="addBasket(book.id)"><b-icon icon="plus"></b-icon>&nbsp;Add to Basket</b-button>
+            <b-button class="btn-secondary" @click="deleteBasket(book.id)">-</b-button>&nbsp;&nbsp;
+            <b-button class="btn-green" @click="addBasket(book.id)">+</b-button>
           </b-card>
         </b-col>
       </b-row>
@@ -29,7 +30,7 @@ export default {
   },
   methods: {
     ...mapActions([
-      'addBook', 'updateBook'
+      'addBook', 'updateBook', 'deleteBook'
     ]),
     addBasket (bookId) {
       const payload = this.books.find(book => {
@@ -39,11 +40,19 @@ export default {
       if (index === -1) {
         this.addBook(payload)
       } else {
-        let { quantity, id } = this.basketBookItem[index]
+        let { quantity } = this.basketBookItem[index]
         quantity += 1
         const itemTotal = 1
-        this.updateBook({ quantity, id, itemTotal, index })
+        this.updateBook({ quantity, itemTotal, index })
       }
+    },
+    deleteBasket (bookId) {
+      const index = this.basketBookItem.findIndex(book => book.id === bookId)
+      if (typeof this.basketBookItem[index] === 'undefined') return false
+      let { quantity } = this.basketBookItem[index]
+      quantity -= 1
+      const itemTotal = 1
+      this.deleteBook({ quantity, itemTotal, index })
     }
   },
   computed: {

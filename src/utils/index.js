@@ -16,6 +16,19 @@ export function specialDiscount (quantity) {
   }
 }
 
-export function numberWithCommas (number) {
-  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+export function calPrice (state, quantity) {
+  const { price } = state
+  state.quantity = quantity
+  state.priceTotal = price * quantity
+
+  const { priceTotal } = state
+  state.percentDiscount = specialDiscount(quantity)
+
+  const { percentDiscount } = state
+  state.discount = quantity > 1 ? (priceTotal * percentDiscount) / 100 : 0
+
+  const { discount } = state
+  state.netTotal = quantity > 1 ? priceTotal - discount : priceTotal
+
+  return state
 }

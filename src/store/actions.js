@@ -7,5 +7,8 @@ export default {
   },
   updateBook: ({ commit }, payload) => {
     commit('updateBook', payload)
+  },
+  deleteBook: ({ commit }, payload) => {
+    commit('deleteBook', payload)
   }
 }

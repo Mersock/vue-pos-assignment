@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { specialDiscount } from '@/utils/index'
+import { calPrice } from '@/utils/index'
 
 export default {
   addBook: (state, payload) => {
@@ -14,24 +14,33 @@ export default {
   },
   updateBook: (state, payload) => {
     const { index, quantity, itemTotal } = payload
-    const { price } = state.basketBookItem[index]
-
     state.basketTotal += itemTotal
 
-    // priceTotal && quantity
+    const calBasket = calPrice(state.basketBookItem[index], quantity)
+    const { priceTotal, percentDiscount, discount, netTotal } = calBasket
+
     Vue.set(state.basketBookItem[index], 'quantity', quantity)
-    Vue.set(state.basketBookItem[index], 'priceTotal', price * quantity)
+    Vue.set(state.basketBookItem[index], 'priceTotal', priceTotal)
+    Vue.set(state.basketBookItem[index], 'percentDiscount', percentDiscount)
+    Vue.set(state.basketBookItem[index], 'discount', discount)
+    Vue.set(state.basketBookItem[index], 'netTotal', netTotal)
+  },
+  deleteBook: (state, payload) => {
+    const { itemTotal } = payload
+    if (state.basketTotal >= 0) state.basketTotal -= itemTotal
 
-    // calculate percent discount
-    const { priceTotal } = state.basketBookItem[index]
-    Vue.set(state.basketBookItem[index], 'percentDiscount', specialDiscount(quantity))
+    const { index, quantity } = payload
 
-    // calculate discount && netTotal
-    const { percentDiscount } = state.basketBookItem[index]
-    Vue.set(state.basketBookItem[index], 'discount', quantity > 1 ? (priceTotal * percentDiscount) / 100 : 0)
+    if (quantity === 0) return state.basketBookItem.splice(index, 1)
 
-    const { discount } = state.basketBookItem[index]
-    Vue.set(state.basketBookItem[index], 'netTotal', quantity > 1 ? priceTotal - discount : 10)
+    const calBasket = calPrice(state.basketBookItem[index], quantity)
+    const { priceTotal, percentDiscount, discount, netTotal } = calBasket
+
+    Vue.set(state.basketBookItem[index], 'quantity', quantity)
+    Vue.set(state.basketBookItem[index], 'priceTotal', priceTotal)
+    Vue.set(state.basketBookItem[index], 'percentDiscount', percentDiscount)
+    Vue.set(state.basketBookItem[index], 'discount', discount)
+    Vue.set(state.basketBookItem[index], 'netTotal', netTotal)
   },
   clearBasket: (state) => {
     state.basketBookItem = []
