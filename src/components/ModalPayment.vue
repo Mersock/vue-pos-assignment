@@ -21,12 +21,19 @@
     </b-container>
 
     <template v-slot:modal-footer="{ cancel }">
-      <b-button size="sm" @click="showPaymentDetail" class="btn-green" v-bind:disabled="change < 0 || change === null" v-if="!success">
-        Payment
-      </b-button>
-      <b-button size="sm" @click="cancel()" >
-        {{ !success ? 'Cancel' : 'Close' }}
-      </b-button>
+      <div class="btn-payment-false" v-if="!success">
+        <b-button size="sm" @click="showPaymentDetail" class="btn-green" v-bind:disabled="change < 0 || change === null" >
+          Payment
+        </b-button>&nbsp;&nbsp;
+        <b-button size="sm" @click="cancel()" >
+          Cancel
+        </b-button>
+      </div>
+      <div class="success" v-if="success">
+        <b-button size="sm"  to="/">
+          Close
+        </b-button>
+      </div>
     </template>
   </b-modal>
 </template>
