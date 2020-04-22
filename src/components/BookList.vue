@@ -11,7 +11,7 @@
             <b-card-text>
               {{book.title}}
             </b-card-text>
-            <b-card-text><strong>฿ {{commasPrice(book.price)}}</strong></b-card-text>
+            <b-card-text><strong>฿ {{book.price}}</strong></b-card-text>
             <b-button class="btn-green" @click="addBasket(book.id)"><b-icon icon="plus"></b-icon>&nbsp;Add to Basket</b-button>
           </b-card>
         </b-col>
@@ -21,7 +21,6 @@
 
 <script>
 import { mapGetters, mapActions, mapState } from 'vuex'
-import { numberWithCommas } from '@/utils/index'
 
 export default {
   data () {
@@ -37,9 +36,6 @@ export default {
         return book.id === bookId
       })
       this.addBook(payload)
-    },
-    commasPrice (number) {
-      return numberWithCommas(number)
     }
   },
   computed: {
