@@ -20,7 +20,7 @@
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
           <b-nav-item>
-            <b-button class="btn-green" size="sm">
+            <b-button class="btn-green" size="sm" v-b-modal.checkout-modal>
               <b-icon icon="bag-fill"></b-icon>&nbsp;
               <b-badge variant="light">{{basketTotal}} <span class="sr-only"></span></b-badge>
             </b-button>&nbsp;
@@ -33,17 +33,22 @@
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
+    <Modal />
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
+import Modal from '@/components/ModalCheckout'
 
 export default {
   computed: {
     ...mapState([
       'basketTotal'
     ])
+  },
+  components: {
+    Modal
   },
   methods: {
     ...mapActions([
