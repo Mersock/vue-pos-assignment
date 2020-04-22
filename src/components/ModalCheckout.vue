@@ -1,7 +1,7 @@
 <template>
   <b-modal id="checkout-modal" size="lg" title="Checkout">
     <b-container class="bv-example-row">
-      <b-row v-for="item in basketItem" :key="item.id">
+      <b-row v-for="item in basketBookItem" :key="item.id">
         <b-col>
           <b-img :src="item.cover" rounded="circle" width="70px" hight="70px"></b-img>
         </b-col>
@@ -27,18 +27,10 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'ModalCheckout',
-  data () {
-    return {
-      basketItem: []
-    }
-  },
   computed: {
     ...mapState([
       'basketBookItem'
     ])
-  },
-  created () {
-    this.basketItem = this.basketBookItem
   }
 }
 </script>
