@@ -22,7 +22,7 @@
         <b-button v-b-modal.payment-modal class="btn-green">Payment</b-button>
       </b-col>
     </b-row>
-    <Modal />
+    <Modal :netTotal="summaryNetPrice()"/>
   </b-container>
 </template>
 
@@ -35,6 +35,10 @@ export default {
   components: {
     Modal
   },
+  data () {
+    return {
+    }
+  },
   computed: {
     ...mapState([
       'basketBookItem'
@@ -44,12 +48,12 @@ export default {
     summaryDiscount () {
       const discountItems = this.basketBookItem.map(item => item.discount)
       const sumDiscount = (a, b) => a + b
-      return discountItems.reduce(sumDiscount)
+      return discountItems.reduce(sumDiscount, 0)
     },
     summaryNetPrice () {
       const netTotalItems = this.basketBookItem.map(item => item.netTotal)
       const sumNetTotal = (a, b) => a + b
-      return netTotalItems.reduce(sumNetTotal)
+      return netTotalItems.reduce(sumNetTotal, 0)
     }
   }
 }
