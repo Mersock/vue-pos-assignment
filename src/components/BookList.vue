@@ -29,13 +29,21 @@ export default {
   },
   methods: {
     ...mapActions([
-      'addBook'
+      'addBook', 'updateBook'
     ]),
     addBasket (bookId) {
       const payload = this.books.find(book => {
         return book.id === bookId
       })
-      this.addBook(payload)
+      const index = this.basketBookItem.findIndex(book => book.id === bookId)
+      if (index === -1) {
+        this.addBook(payload)
+      } else {
+        let { quantity, id } = this.basketBookItem[index]
+        quantity += 1
+        const itemTotal = 1
+        this.updateBook({ quantity, id, itemTotal, index })
+      }
     }
   },
   computed: {
@@ -43,7 +51,7 @@ export default {
       'getBooks'
     ]),
     ...mapState([
-      'books'
+      'books', 'basketBookItem'
     ])
   }
 }

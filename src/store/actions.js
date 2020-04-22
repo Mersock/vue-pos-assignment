@@ -4,5 +4,8 @@ export default {
   },
   clearBasket: ({ commit }) => {
     commit('clearBasket')
+  },
+  updateBook: ({ commit }, payload) => {
+    commit('updateBook', payload)
   }
 }
