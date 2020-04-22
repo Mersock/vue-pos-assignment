@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - 13.13.0
+install: npm install
+script:
+  - npm run build
+deploy:
+  provider: s3
+  access_key_id: $AWS_KEY
+  secret_access_key: $AWS_SECRET
+  bucket: line-little-brown-book
+  skip_cleanup: true
+  acl: public_read
+  local_dir: dist
+  on:
+    branch: release
