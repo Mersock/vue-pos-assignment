@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  line-little-brown:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: line-little-brown
+    ports:
+      - "8888:8080"
+    volumes:
+      - /usr/app/node_modules
+      - .:/usr/app/
