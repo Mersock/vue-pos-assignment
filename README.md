@@ -1,5 +1,9 @@
 # vue-pos-assignment
 
+## Link Project URL
+[Link To Proejct](http://line-little-brown-book.s3-website-ap-southeast-1.amazonaws.com/).
+
+
 ## Project setup
 ```
 npm install
